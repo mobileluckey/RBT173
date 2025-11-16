@@ -1,0 +1,233 @@
+//Assigning letters of the Segment Display to the Ports on
+//the UNO board
+
+int a = 7;
+int b = 8;
+int c = 9;
+int d = 10;
+int e = 11;
+int f = 12;
+int g = 13;
+
+//Turning on the Serial Monitor and setting up the loops
+//for the program
+void setup()
+{
+  Serial.begin(9600);
+  for(int i = 7; i <= 13; i++) {
+    pinMode(i, OUTPUT);
+  }
+  for(int i = 2; i <= 5; i++){
+    pinMode(i, INPUT_PULLUP);
+  }
+
+}
+
+
+void loop()
+  {
+  //Setting the switches values to 1
+ int val0 = digitalRead(2);
+ int val1 = digitalRead(3);
+ int val2 = digitalRead(4);
+ int val3 = digitalRead(5);
+  
+  if(val0 == 1 && val1 == 1 && val2 == 1 && val3 ==1){
+    clear();//Clears the segment display
+    number0();//Displays 0 on the segment display
+  }
+  else if (val0 == 0 && val1 == 1 && val2 == 1 && val3 == 1){
+      clear();//Clears the segment display
+    number1();//Displays 1 on the segment display
+  }
+  
+  else if (val0 == 1 && val1 == 0 && val2 == 1 && val3 == 1){
+      clear();//Clears the segment display
+    number2();//Displays 2 on the segment display
+  }
+  
+  else if (val0 == 0 && val1 == 0 && val2 == 1 && val3 == 1){
+      clear();//Clears the segment display
+    number3();//Displays 3 on the segment display
+  }
+  else if(val0 == 1 && val1 == 1 && val2 == 0 && val3 == 1){
+    clear();//Clears the segment display
+    number4();//Displays 4 on the segment display
+  }
+  else if(val0 == 0 && val1 == 1 && val2 == 0 && val3 == 1){
+    clear();//Clears the segment display
+    number5();//Displays 5 on the segment display
+  }
+  else if(val0 == 1 && val1 == 0 && val2 == 0 && val3 == 1){
+    clear();//Clears the segment display
+    number6();//Displays 6 on the segment display
+  }
+  else if(val0 == 0 && val1 == 0 && val2 == 0 && val3 == 1){
+    clear();//Clears the segment display
+    number7();//Displays 7 on the segment display
+  }
+  else if(val0 == 1 && val1 == 1 && val2 == 1 && val3 == 0){
+    clear();//Clears the segment display
+    number8();//Displays 8 on the segment display
+  }
+  else if(val0 == 0 && val1 == 1 && val2 == 1 && val3 == 0){
+    clear();//Clears the segment display
+    number9();//Displays 9 on the segment display
+  }
+  else if(val0 == 0 && val1 == 0 && val2 == 0 && val3 == 0){
+    clear();//Clears the segment display
+    letterA();//Displays the letter A on the segment display
+  }
+  else{
+    //Displays if dip switches are in positons that do not equal a
+    //number from 0 thru 9.
+          Serial.println("Not in Range");
+        }
+          delay(1000);//Waits 1 second
+  
+}
+  //Clears the display and shows "clear" in the Serial Monitor
+  void clear(){
+    digitalWrite(a, LOW);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, LOW);
+    digitalWrite(e, LOW);
+    digitalWrite(f, LOW);
+    digitalWrite(g, LOW);
+    Serial.println("Clear");
+    }
+  
+//Lights up the segments that make the number 0 in the display
+//and prints it in the Serial Monitor
+void number0(){
+    digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+    Serial.println ("0");
+
+
+}
+//Lights up the segments that make the number 1 in the display
+//and prints it in the Serial Monitor
+void number1(){
+    
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+  	Serial.println ("1");
+
+
+}
+//Lights up the segments that make the number 2 in the display
+//and prints it in the Serial Monitor
+void number2(){
+    digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("2");
+
+ 
+}
+//Lights up the segments that make the number 3 in the display
+//and prints it in the Serial Monitor
+void number3(){
+    digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("3");
+
+ 
+}
+//Lights up the segments that make the number 4 in the display
+//and prints it in the Serial Monitor
+void number4(){
+    
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("4");
+
+ 
+}
+//Lights up the segments that make the number 5 in the display
+//and prints it in the Serial Monitor
+void number5(){
+    digitalWrite(a, HIGH);    
+    digitalWrite(c, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("5");
+
+  
+}
+//Lights up the segments that make the number 6 in the display
+//and prints it in the Serial Monitor
+void number6(){
+    digitalWrite(a, HIGH);
+    digitalWrite(c, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("6");
+  
+ 
+}
+//Lights up the segments that make the number 7 in the display
+//and prints it in the Serial Monitor
+void number7(){
+    digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+ 	Serial.println ("7");
+
+  
+}
+//Lights up the segments that make the number 8 in the display
+//and prints it in the Serial Monitor
+void number8(){
+    digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("8");
+
+
+}
+//Lights up the segments that make the number 9 in the display
+//and prints it in the Serial Monitor
+void number9(){
+    digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("9");
+
+
+} 
+//Lights up the segments that make the letter A in the display
+//and prints it in the Serial Monitor
+void letterA(){
+  
+ 	digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+  	digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+  	Serial.println ("A");
+}
